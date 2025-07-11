@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SA Lotto & PowerBall Predictor</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #fceabb, #f8b500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      margin-bottom: 30px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .generator-box {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 30px;
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    h2 {
+      font-size: 1.6em;
+      margin-bottom: 20px;
+      color: #f8b500;
+    }
+
+    button {
+      background: linear-gradient(90deg, #f8b500, #fceabb);
+      color: #222;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+      margin-bottom: 20px;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #ffd700, #f8b500);
+      box-shadow: 0 6px 20px rgba(255, 223, 0, 0.6);
+    }
+
+    .numbers {
+      font-size: 1.8em;
+      letter-spacing: 10px;
+      color: #00f7ff;
+      text-shadow: 0 0 10px #00f7ff;
+      margin-bottom: 10px;
+    }
+
+    .bonus {
+      font-size: 1.3em;
+      color: #ff69b4;
+      text-shadow: 0 0 10px #ff69b4;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: rgba(255,255,255,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎰 SA Lotto Predictor</h1>
+  <p>Generate your lucky numbers for Lotto & PowerBall ✨</p>
+
+  <!-- Lotto Section -->
+  <div class="generator-box">
+    <h2>SA Lotto (6 Numbers from 1–52)</h2>
+    <button onclick="generateLotto()">Generate Lotto Numbers</button>
+    <div class="numbers" id="lottoNumbers">- - - - - -</div>
+  </div>
+
+  <!-- PowerBall Section -->
+  <div class="generator-box">
+    <h2>PowerBall (5 + Bonus)</h2>
+    <button onclick="generatePowerBall()">Generate PowerBall Numbers</button>
+    <div class="numbers" id="powerBallNumbers">- - - - -</div>
+    <div class="bonus" id="powerBallBonus">⭐ Bonus Ball: -</div>
+  </div>
+
+  <footer>
+    © 2025 Shumani's Manifesting Machine ✨ | Play responsibly 💫
+  </footer>
+
+  <script>
+    function generateLotto() {
+      let lotto = new Set();
+      while (lotto.size < 6) {
+        lotto.add(Math.floor(Math.random() * 52) + 1);
+      }
+      document.getElementById("lottoNumbers").textContent =
+        Array.from(lotto).sort((a, b) => a - b).join(" - ");
+    }
+
+    function generatePowerBall() {
+      let pb = new Set();
+      while (pb.size < 5) {
+        pb.add(Math.floor(Math.random() * 50) + 1);
+      }
+      let bonus = Math.floor(Math.random() * 20) + 1;
+
+      document.getElementById("powerBallNumbers").textContent =
+        Array.from(pb).sort((a, b) => a - b).join(" - ");
+      document.getElementById("powerBallBonus").textContent =
+        "⭐ Bonus Ball: " + bonus;
+    }
+  </script>
+
+</body>
+</html>
